@@ -15,6 +15,7 @@ pub fn build(b: *std.Build) void {
     lib.linkLibC();
     lib.addIncludePath(b.path("include"));
     lib.root_module.addCMacro("FT2_BUILD_LIBRARY", "1");
+    lib.root_module.addCMacro("FT_CONFIG_OPTION_SUBPIXEL_RENDERING", "1");
 
     if (use_system_zlib) {
         lib.root_module.addCMacro("FT_CONFIG_OPTION_SYSTEM_ZLIB", "1");
@@ -53,6 +54,7 @@ const sources = [_][]const u8{
     "src/base/ftglyph.c",
     "src/base/ftgxval.c",
     "src/base/ftinit.c",
+    "src/base/ftlcdfil.c",
     "src/base/ftmm.c",
     "src/base/ftotval.c",
     "src/base/ftpatent.c",
